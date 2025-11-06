@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabel Nilai Siswa</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 30px auto;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #ddd;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2>TABEL NILAI SISWA</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama Siswa</th>
+            <th>Tugas</th>
+            <th>UTS</th>
+            <th>UAS</th>
+            <th>NA</th>
+        </tr>
+    </thead>
+
+    <tbody id="dataSiswa"></tbody>
+</table>
+
+<script>
+    // Data siswa
+    let siswa = [
+        {nama: "Asep", tugas: 80, uts: 95, uas: 85},
+        {nama: "Iwan", tugas: 75, uts: 75, uas: 90},
+        {nama: "Cepi", tugas: 70, uts: 80, uas: 90},
+        {nama: "Agus", tugas: 65, uts: 40, uas: 55},
+        {nama: "Dadang", tugas: 60, uts: 70, uas: 60}
+    ];
+
+    let tableBody = document.getElementById("dataSiswa");
+    
+    siswa.forEach((s, index) => {
+        // Hitung NA
+        let na = (0.4 * s.tugas) + (0.3 * s.uts) + (0.3 * s.uas);
+
+        // Membuat baris tabel
+        let row = `<tr>
+                        <td>${index + 1}</td>
+                        <td>${s.nama}</td>
+                        <td>${s.tugas}</td>
+                        <td>${s.uts}</td>
+                        <td>${s.uas}</td>
+                        <td>${na.toFixed(1)}</td>
+                   </tr>`;
+        tableBody.innerHTML += row;
+    });
+</script>
+
+</body>
+</html>
